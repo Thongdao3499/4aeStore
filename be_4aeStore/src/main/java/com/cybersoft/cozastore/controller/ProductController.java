@@ -28,12 +28,12 @@ public class ProductController {
 
     @PostMapping("")
     public ResponseEntity<?> insertProduct(@RequestParam String name, @RequestParam MultipartFile file,
-                                           @RequestParam double price, @RequestParam int quanity,
+                                           @RequestParam double price, @RequestParam int quantity,
                                            @RequestParam int idColor, @RequestParam int idSize,
                                            @RequestParam int idCategory
     ) throws IOException {
 
-        boolean isSuccess = productServiceImp.insertProduct(name, file, price, quanity, idColor, idSize, idCategory);
+        boolean isSuccess = productServiceImp.insertProduct(name, file, price, quantity, idColor, idSize, idCategory);
 
         return new ResponseEntity<>("Insert Product", HttpStatus.OK);
     }

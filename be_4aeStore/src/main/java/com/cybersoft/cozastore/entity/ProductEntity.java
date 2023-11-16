@@ -24,8 +24,8 @@ public class ProductEntity {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "quanity")
-    private int quanity;
+    @Column(name = "quantity")
+    private int quantity;
 
     @Column(name = "create_date")
     private Date createDate;
@@ -93,12 +93,12 @@ public class ProductEntity {
         this.description = description;
     }
 
-    public int getQuanity() {
-        return quanity;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setQuanity(int quanity) {
-        this.quanity = quanity;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public Date getCreateDate() {

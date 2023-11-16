@@ -22,6 +22,6 @@ public interface ProductServiceImp {
 
 
     boolean insertProduct(String name, MultipartFile file, double price,
-                          int quanity, int idColor, int idSize, int idCategory) throws IOException;
+                          int quantity, int idColor, int idSize, int idCategory) throws IOException;
 
 }
