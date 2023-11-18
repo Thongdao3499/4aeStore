@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/4aeStore.iml" filepath="$PROJECT_DIR$/.idea/4aeStore.iml" />
-      <module fileurl="file://$PROJECT_DIR$/be_4aeStore/cozastore.iml" filepath="$PROJECT_DIR$/be_4aeStore/cozastore.iml" />
     </modules>
   </component>
 </project>

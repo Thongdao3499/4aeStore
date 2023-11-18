@@ -38,7 +38,7 @@ public class CartService implements CartServiceImp {
         if (product.isPresent() && user.isPresent()) {
             cart.setProduct(product.get());
             cart.setUser(user.get());
-            cart.setQuanity(cartRequest.getQuanity());
+            cart.setQuantity(cartRequest.getQuanity());
 
             try {
                 cartRepository.save(cart);
@@ -61,7 +61,7 @@ public class CartService implements CartServiceImp {
                 CartResponse cartTemp = new CartResponse();
 
                 cartTemp.setCart(c.getId());
-                cartTemp.setQuanity(c.getQuanity());
+                cartTemp.setQuanity(c.getQuantity());
                 cartTemp.setNameProduct(c.getProduct().getName());
 
                 cartResponses.add(cartTemp);
