@@ -15,6 +15,8 @@ public interface ProductServiceImp {
 
     void deleteProduct(int  id);
 
+     List<ProductEntity> getAllProduct();
+
 //    boolean clearCache();
 
 
@@ -23,5 +25,6 @@ public interface ProductServiceImp {
 
     boolean insertProduct(String name, MultipartFile file, double price,
                           int quantity, int idColor, int idSize, int idCategory) throws IOException;
+
 
 }

@@ -62,6 +62,11 @@ public class ProductService implements ProductServiceImp {
     }
 
     @Override
+    public List<ProductEntity> getAllProduct() {
+        return productRepository.findAll();
+    }
+
+    @Override
     public List<ProductEntity> searchProducts(String keyword) {
         return productRepository.findByNameContaining(keyword);
 

@@ -20,10 +20,14 @@ public class ProductController {
     @Autowired
     private ProductServiceImp productServiceImp;
 
-    @GetMapping("")
-    public ResponseEntity<?> getAllProduct(){
-
-        return new ResponseEntity<>("Hello Product", HttpStatus.OK);
+    @GetMapping("/all")
+    public ResponseEntity<?> getAllProducts(){
+        List<ProductEntity> products = productServiceImp.getAllProduct();
+        if(products != null && !products.isEmpty()){
+            return new ResponseEntity<>(products,HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @PostMapping("")
