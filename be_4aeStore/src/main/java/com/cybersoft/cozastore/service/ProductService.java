@@ -68,7 +68,7 @@ public class ProductService implements ProductServiceImp {
 
     @Override
     public List<ProductEntity> searchProducts(String keyword) {
-        return productRepository.findByNameContaining(keyword);
+        return productRepository.findByName(keyword);
 
     }
 

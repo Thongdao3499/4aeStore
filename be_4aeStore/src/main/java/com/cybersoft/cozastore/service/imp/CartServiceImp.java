@@ -1,6 +1,8 @@
 package com.cybersoft.cozastore.service.imp;
 
+import com.cybersoft.cozastore.entity.CategoryEntity;
 import com.cybersoft.cozastore.payload.request.CartRequest;
+import com.cybersoft.cozastore.payload.request.CreateProductRequest;
 import com.cybersoft.cozastore.payload.response.CartResponse;
 
 import java.util.List;

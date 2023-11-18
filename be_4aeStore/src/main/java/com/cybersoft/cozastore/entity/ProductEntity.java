@@ -1,5 +1,6 @@
 package com.cybersoft.cozastore.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -32,17 +33,21 @@ public class ProductEntity {
 
     @ManyToOne //bên many giữ khóa ngoại
     @JoinColumn(name = "id_category")
+    @JsonIgnore
     private CategoryEntity category;
 
     @ManyToOne
     @JoinColumn(name = "id_size")
+    @JsonIgnore
     private SizeEntity size;
 
     @ManyToOne
     @JoinColumn(name = "id_color")
+    @JsonIgnore
     private ColorEntity color;
 
     @OneToMany(mappedBy = "product")
+    @JsonIgnore
     private List<CartEntity> carts;
 
     public List<CartEntity> getCarts() {
