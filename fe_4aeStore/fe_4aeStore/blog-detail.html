@@ -126,6 +126,7 @@
         })(w, d, "zarazData", "script");
       })(window, document);
     </script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   </head>
   <body class="animsition">
     <header class="header-v4">
@@ -414,18 +415,21 @@
               <div class="p-t-32">
                 <span class="flex-w flex-m stext-111 cl2 p-b-19">
                   <span>
-                    <span class="cl4">By</span> Admin
+                    <span class="cl4">By </span
+                    ><span id="currentRole">Admin</span>
                     <span class="cl12 m-l-4 m-r-6">|</span>
                   </span>
-                  <span>
+                  <!-- <span>
                     22 Jan, 2023
                     <span class="cl12 m-l-4 m-r-6">|</span>
-                  </span>
+                  </span> -->
                   <span>
-                    StreetStyle, Fashion, Couple
+                    StreetStyle, Fashion
                     <span class="cl12 m-l-4 m-r-6">|</span>
                   </span>
-                  <span> 8 Comments </span>
+                  <p id="comments-count">
+                    <span id="comments-number">0</span> comments
+                  </p>
                 </span>
                 <h4 class="ltext-109 cl2 p-b-28">
                   8 Inspiring Ways to Wear Dresses in the Winter
@@ -910,6 +914,69 @@
       data-cf-beacon='{"rayId":"7ae44e675ce80955","version":"2023.3.0","b":1,"token":"cd0b4b3a733644fc843ef0b185f98241","si":100}'
       crossorigin="anonymous"
     ></script>
+
+    <script>
+      // Function to update the number of comments
+      function updateComments() {
+        $.ajax({
+          url: "http://127.0.0.1:5500/fe_4aeStore/fe_4aeStore/blog-detail.html",
+          type: "GET",
+          dataType: "json",
+          success: function (response) {
+            // Assuming the server returns a JSON object with the comment count
+            var commentCount = response.commentCount;
+
+            // Update the HTML content
+            $("#comments-number").text(commentCount);
+          },
+          error: function (error) {
+            console.error("Error fetching comment count:", error);
+          },
+        });
+      }
+
+      // Call the function initially to load the initial comment count
+      updateComments();
+
+      // Call this function whenever a new comment is added
+      function onCommentAdded() {
+        // Code to add a new comment
+
+        // After adding a comment, update the comment count
+        updateComments();
+      }
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Function to get the current role
+        function getCurrentRole() {
+          fetch("/getCurrentRole", {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+              }
+              return response.json();
+            })
+            .then((data) => {
+              const currentRole = data.role;
+              console.log("Current Role:", currentRole);
+              document.getElementById("currentRole").innerText =
+                "Current Role: " + currentRole;
+            })
+            .catch((error) => {
+              console.error("Error getting current role:", error);
+            });
+        }
+
+        // Call the getCurrentRole function when the page loads
+        getCurrentRole();
+      });
+    </script>
   </body>
 
   <!-- Mirrored from preview.colorlib.com/theme/cozastore/blog-detail.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 27 Mar 2023 02:47:10 GMT -->

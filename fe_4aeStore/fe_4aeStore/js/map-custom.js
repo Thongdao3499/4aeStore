@@ -8,7 +8,7 @@
             var img_pin = selector_map.attr('data-pin');
             var data_map_x = selector_map.attr('data-map-x');
             var data_map_y = selector_map.attr('data-map-y');
-            var scrollwhell = selector_map.attr('data-scrollwhell');
+            var scrollwheel = selector_map.attr('data-scrollwheel');
             var draggable = selector_map.attr('data-draggable');
             var map_zoom = selector_map.attr('data-zoom');
 
@@ -19,8 +19,8 @@
                 data_map_x = 40.007749;
                 data_map_y = -93.266572;
             }
-            if (scrollwhell == null) {
-                scrollwhell = 0;
+            if (scrollwheel == null) {
+                scrollwheel = 0;
             }
 
             if (draggable == null) {
@@ -222,7 +222,7 @@
                     zoom: Number(map_zoom),
                     zoomControl: false,  
                     disableDoubleClickZoom: true,
-                    scrollwheel: scrollwhell,
+                    scrollwheel: scrollwheel,
                     navigationControl: true,
                     mapTypeControl: false,
                     scaleControl: false,
