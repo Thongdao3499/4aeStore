@@ -13,7 +13,7 @@ public class CreateProductRequest {
     private int sizeId;
     private int colorId;
 
-    private int  categoryId;
+        private int  categoryId;
 
     public String getImage() {
         return image;
