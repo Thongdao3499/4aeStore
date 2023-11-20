@@ -22,7 +22,6 @@ $(document).ready(function () {
     }).done(function (data) {
       if (data && data.statusCode == 200) {
         localStorage.setItem("token", data.data);
-        window.location.href = "./index.html"
       } else {
         alert("Sai email hoac mat khau!");
       }
