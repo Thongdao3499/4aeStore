@@ -79,6 +79,6 @@ public class BlogService implements BlogServiceImp {
 
     @Override
     public List<BlogEntity> searchBlog(String keyword) {
-        return blogRepository.findByName(keyword);
+        return blogRepository.findByContent(keyword);
     }
 }
