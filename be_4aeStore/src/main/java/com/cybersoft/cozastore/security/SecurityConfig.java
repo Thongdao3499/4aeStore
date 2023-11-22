@@ -22,6 +22,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @Configuration
 @EnableWebSecurity //custom spring security
@@ -69,14 +72,15 @@ public class SecurityConfig {
     //cau hinh chung thuc cho cac link chi dinh cho security
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-
         return http.csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeHttpRequests()
+
                     .requestMatchers("/login/**").permitAll()
                     .requestMatchers("/file/**").permitAll()
                     .requestMatchers("/cart/**").permitAll()
+
                     .requestMatchers("/blog/**").permitAll()
                     .requestMatchers("/blog-detail/**").permitAll()
 
@@ -94,9 +98,20 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.GET, "/cart").hasRole("USER")
                     .anyRequest().authenticated()
                 .and()
+                .formLogin().disable()
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
 
+    }
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.addAllowedOrigin("http://127.0.0.1:5503"); // Thêm origin của frontend
+        configuration.addAllowedMethod("*");
+        configuration.addAllowedHeader("*");
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
     }
 
 }

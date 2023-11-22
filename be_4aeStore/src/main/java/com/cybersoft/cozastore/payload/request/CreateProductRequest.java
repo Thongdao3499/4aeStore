@@ -5,15 +5,11 @@ public class CreateProductRequest {
     private String name;
 
     private  String image;
-    private String description;
+//    private String description;
     private long price;
 
     private int quantity;
 
-    private int sizeId;
-    private int colorId;
-
-        private int  categoryId;
 
     public String getImage() {
         return image;
@@ -21,22 +17,6 @@ public class CreateProductRequest {
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public int getSizeId() {
-        return sizeId;
-    }
-
-    public void setSizeId(int sizeId) {
-        this.sizeId = sizeId;
-    }
-
-    public int getColorId() {
-        return colorId;
-    }
-
-    public void setColorId(int colorId) {
-        this.colorId = colorId;
     }
 
     public String getName() {
@@ -47,13 +27,13 @@ public class CreateProductRequest {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
+//    public String getDescription() {
+//        return description;
+//    }
+//
+//    public void setDescription(String description) {
+//        this.description = description;
+//    }
 
     public long getPrice() {
         return price;
@@ -71,11 +51,4 @@ public class CreateProductRequest {
         this.quantity = quantity;
     }
 
-    public int getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
-    }
 }

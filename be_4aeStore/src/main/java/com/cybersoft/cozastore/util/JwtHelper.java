@@ -1,5 +1,6 @@
 package com.cybersoft.cozastore.util;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -37,6 +38,7 @@ public class JwtHelper {
         return token;
     }
 
+
     // Giải mã token
     public String parserToken (String token){
         SecretKey key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secKey));
@@ -47,5 +49,16 @@ public class JwtHelper {
 
         return data;
     }
+    public String getSubject(String token) {
+        Claims claims = getClaims(token);
+        return claims.getSubject();
+    }
 
+    private Claims getClaims(String token) {
+        return Jwts.parserBuilder()
+                .setSigningKey(secKey)
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
+    }
 }

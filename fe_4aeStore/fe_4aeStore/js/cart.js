@@ -1,6 +1,6 @@
 $(document).ready(function () {
   $.ajax({
-    url: "http://localhost:8080/cart/8",
+    url: "http://localhost:8080/cart/1",
     method: "get",
   }).done(function (data) {
     console.log("Server tra ve ", data);
