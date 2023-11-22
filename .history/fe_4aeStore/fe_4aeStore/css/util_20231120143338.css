@@ -294,10 +294,7 @@ button:focus {outline: none;}
 	display: block;
 }
 
-.wrap-pic-w img {
-	width: 100%;
-	height: 280px;
-}
+.wrap-pic-w img {width: 100%;}
 
 .wrap-pic-s img {width: 100%; height: 100%;}
 

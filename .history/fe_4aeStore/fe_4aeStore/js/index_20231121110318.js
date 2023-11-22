@@ -11,14 +11,6 @@ $(document).ready(function() {
             }
         })
             .done(function( msg ) {
-              if(msg.success) {
-               $.each(msg.data,function(index, value) {
-                console.log(value)
-               })
-              }
-              //cart_cozastore
-
-
                 var html =<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
                 <div class="block2">
                   <div class="block2-pic hov-img0">
