@@ -9,5 +9,7 @@ import java.util.List;
 
 @Repository
 public interface ProductRepository extends JpaRepository<ProductEntity, Integer> {
-    List<ProductEntity> findByNameContaining(String keyword);
+    List<ProductEntity> findByName(String keyword);
+
+
 }
