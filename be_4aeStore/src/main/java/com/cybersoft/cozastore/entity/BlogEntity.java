@@ -19,9 +19,6 @@ public class BlogEntity {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "description")
-    private String description;
-
     @Column(name = "content")
     private String content;
 
@@ -35,7 +32,7 @@ public class BlogEntity {
     private Set<CommentEntity> comments;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "id_user")
     private UserEntity user;
 
     public int getId() {
@@ -60,14 +57,6 @@ public class BlogEntity {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public String getContent() {

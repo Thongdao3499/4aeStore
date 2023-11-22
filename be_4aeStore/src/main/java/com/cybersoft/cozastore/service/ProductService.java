@@ -40,7 +40,7 @@ public class ProductService implements ProductServiceImp {
         product.setName(request.getName());
 //        product.setDescription(request.getDescription());
         product.setPrice(request.getPrice());
-        product.setQuantity(request.getQuantity());
+        product.setQuanity(request.getQuantity());
 
 //
 //        Optional<CategoryEntity> optionalCategory = categoryRepository.findById(request.getCategoryId());
@@ -90,7 +90,11 @@ public class ProductService implements ProductServiceImp {
         productEntity.setName(name);
         productEntity.setImage(file.getOriginalFilename());
         productEntity.setPrice(price);
+<<<<<<< HEAD
         productEntity.setQuantity(quantity);
+=======
+        productEntity.setQuanity(quanity);
+>>>>>>> fad21aec420d4ea5e845c2de751f613cbc48f7c3
 
 //        ColorEntity colorEntity = new ColorEntity();
 //        colorEntity.setId(idColor);

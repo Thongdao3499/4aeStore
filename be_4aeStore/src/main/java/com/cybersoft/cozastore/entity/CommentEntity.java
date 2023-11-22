@@ -14,6 +14,12 @@ public class CommentEntity {
     @Column(name = "content")
     private String content;
 
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "email")
+    private String email;
+
     @Column(name = "create_date")
     private Date create_date;
 

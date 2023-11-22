@@ -80,12 +80,25 @@ public class SecurityConfig {
                     .requestMatchers("/login/**").permitAll()
                     .requestMatchers("/file/**").permitAll()
                     .requestMatchers("/cart/**").permitAll()
+<<<<<<< HEAD
                 .requestMatchers("/", "/error", "/webjars/**").permitAll()
 
                 .requestMatchers(HttpMethod.POST, "/product","/category","/cart").hasRole("ADMIN")
+=======
+                    .requestMatchers("/blog/**").permitAll()
+                    .requestMatchers("/blog-detail/**").permitAll()
+
+                    .requestMatchers(HttpMethod.POST, "/product","/category","/cart").hasRole("ADMIN")
+>>>>>>> fad21aec420d4ea5e845c2de751f613cbc48f7c3
                     .requestMatchers(HttpMethod.GET, "/product").permitAll()
-                   .requestMatchers(HttpMethod.PUT, "/product","/category").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.DELETE,"/category").hasRole("ADMIN")
+                    .requestMatchers(HttpMethod.PUT, "/product","/category").hasRole("ADMIN")
+                    .requestMatchers(HttpMethod.DELETE,"/category").hasRole("ADMIN")
+
+                    .requestMatchers(HttpMethod.POST, "/blog", "/blog-detail").permitAll()
+                    .requestMatchers(HttpMethod.PUT, "/blog", "/blog-detail").permitAll()
+                    .requestMatchers(HttpMethod.DELETE, "/blog", "/blog-detail").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/blog").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/blog-detail").hasRole("ADMIN")
 
                 .requestMatchers(HttpMethod.GET, "/cart").hasRole("USER")
                     .anyRequest().authenticated()
