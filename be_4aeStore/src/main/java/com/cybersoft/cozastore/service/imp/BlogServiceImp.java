@@ -14,7 +14,7 @@ import java.util.List;
 public interface BlogServiceImp {
 
     //add
-    boolean insertBlog(String image, String title, String content, Date createDate)
+    boolean insertBlog(MultipartFile file, String title, String content, Date createDate)
             throws IOException;
 
     //update

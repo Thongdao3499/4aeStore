@@ -10,6 +10,7 @@ import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.Date;
@@ -35,11 +36,11 @@ public class BlogController {
     }
 
     @PostMapping("")
-    public ResponseEntity<?> insertBlog(@RequestParam String image, @RequestParam String title,
+    public ResponseEntity<?> insertBlog(@RequestParam MultipartFile file, @RequestParam String title,
                                         @RequestParam String content, @RequestParam Date createDate
     ) throws IOException {
 
-        boolean isSuccess = blogServiceImp.insertBlog(image, title, content, createDate);
+        boolean isSuccess = blogServiceImp.insertBlog(file, title, content, createDate);
 
         return new ResponseEntity<>("Blog posted", HttpStatus.OK);
     }
