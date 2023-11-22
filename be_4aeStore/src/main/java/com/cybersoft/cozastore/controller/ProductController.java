@@ -3,6 +3,7 @@ package com.cybersoft.cozastore.controller;
 import com.cybersoft.cozastore.entity.ProductEntity;
 import com.cybersoft.cozastore.payload.request.CreateProductRequest;
 import com.cybersoft.cozastore.service.imp.ProductServiceImp;
+import org.springframework.aot.hint.annotation.RegisterReflectionForBinding;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
@@ -13,9 +14,10 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.List;
 
-@CrossOrigin
+
 @RestController
 @RequestMapping("/product")
+@CrossOrigin(origins = "http://127.0.0.1:5503", exposedHeaders = {"Access-Control-Allow-Origin"})
 public class ProductController {
 
     @Autowired
@@ -33,14 +35,20 @@ public class ProductController {
 
     @PostMapping("")
     public ResponseEntity<?> insertProduct(@RequestParam String name, @RequestParam MultipartFile file,
-                                           @RequestParam double price, @RequestParam int quantity,
-                                           @RequestParam int idColor, @RequestParam int idSize,
-                                           @RequestParam int idCategory
+                                           @RequestParam double price, @RequestParam int quantity
     ) throws IOException {
 
-        boolean isSuccess = productServiceImp.insertProduct(name, file, price, quantity, idColor, idSize, idCategory);
+        try {
+            boolean isSuccess = productServiceImp.insertProduct(name, file, price, quantity);
 
-        return new ResponseEntity<>("Insert Product", HttpStatus.OK);
+            if (isSuccess) {
+                return new ResponseEntity<>("Product inserted successfully", HttpStatus.CREATED);
+            } else {
+                return new ResponseEntity<>("Failed to insert product", HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        } catch (IOException e) {
+            return new ResponseEntity<>("Error processing the request: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteProduct(@PathVariable int id){
@@ -64,5 +72,7 @@ public class ProductController {
 
         return ResponseEntity.ok(list);
     }
+
+
 
 }

@@ -38,14 +38,14 @@ public class ProductService implements ProductServiceImp {
     public ProductEntity updateProduct(int id, CreateProductRequest request) throws ChangeSetPersister.NotFoundException {
         ProductEntity product= productRepository.findById(id).orElseThrow(() -> new ChangeSetPersister.NotFoundException());
         product.setName(request.getName());
-        product.setDescription(request.getDescription());
+//        product.setDescription(request.getDescription());
         product.setPrice(request.getPrice());
         product.setQuantity(request.getQuantity());
 
-
-        Optional<CategoryEntity> optionalCategory = categoryRepository.findById(request.getCategoryId());
-        CategoryEntity category = optionalCategory.orElse(new CategoryEntity()); // Hoặc thực hiện xử lý nếu không tìm thấy Category
-        product.setCategory(category);
+//
+//        Optional<CategoryEntity> optionalCategory = categoryRepository.findById(request.getCategoryId());
+//        CategoryEntity category = optionalCategory.orElse(new CategoryEntity()); // Hoặc thực hiện xử lý nếu không tìm thấy Category
+//        product.setCategory(category);
 
         try {
             productRepository.save(product);
@@ -73,7 +73,7 @@ public class ProductService implements ProductServiceImp {
     }
 
     @Override
-    public boolean insertProduct(String name, MultipartFile file, double price, int quanity, int idColor, int idSize, int idCategory) throws IOException {
+    public boolean insertProduct(String name, MultipartFile file, double price, int quantity) throws IOException {
 
         String pathImage = rootFolder + "\\" + file.getOriginalFilename();
 
@@ -90,19 +90,19 @@ public class ProductService implements ProductServiceImp {
         productEntity.setName(name);
         productEntity.setImage(file.getOriginalFilename());
         productEntity.setPrice(price);
-        productEntity.setQuantity(quanity);
+        productEntity.setQuantity(quantity);
 
-        ColorEntity colorEntity = new ColorEntity();
-        colorEntity.setId(idColor);
-        productEntity.setColor(colorEntity);
+//        ColorEntity colorEntity = new ColorEntity();
+//        colorEntity.setId(idColor);
+//        productEntity.setColor(colorEntity);
+//
+//        SizeEntity sizeEntity = new SizeEntity();
+//        sizeEntity.setId(idSize);
+//        productEntity.setSize(sizeEntity);
 
-        SizeEntity sizeEntity = new SizeEntity();
-        sizeEntity.setId(idSize);
-        productEntity.setSize(sizeEntity);
-
-        CategoryEntity categoryEntity = new CategoryEntity();
-        categoryEntity.setId(idCategory);
-        productEntity.setCategory(categoryEntity);
+//        CategoryEntity categoryEntity = new CategoryEntity();
+//        categoryEntity.setId(idCategory);
+//        productEntity.setCategory(categoryEntity);
 
         productRepository.save(productEntity);
 
