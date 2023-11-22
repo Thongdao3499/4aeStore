@@ -80,16 +80,11 @@ public class SecurityConfig {
                     .requestMatchers("/login/**").permitAll()
                     .requestMatchers("/file/**").permitAll()
                     .requestMatchers("/cart/**").permitAll()
-<<<<<<< HEAD
-                .requestMatchers("/", "/error", "/webjars/**").permitAll()
 
-                .requestMatchers(HttpMethod.POST, "/product","/category","/cart").hasRole("ADMIN")
-=======
                     .requestMatchers("/blog/**").permitAll()
                     .requestMatchers("/blog-detail/**").permitAll()
 
                     .requestMatchers(HttpMethod.POST, "/product","/category","/cart").hasRole("ADMIN")
->>>>>>> fad21aec420d4ea5e845c2de751f613cbc48f7c3
                     .requestMatchers(HttpMethod.GET, "/product").permitAll()
                     .requestMatchers(HttpMethod.PUT, "/product","/category").hasRole("ADMIN")
                     .requestMatchers(HttpMethod.DELETE,"/category").hasRole("ADMIN")

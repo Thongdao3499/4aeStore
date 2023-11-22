@@ -90,11 +90,7 @@ public class ProductService implements ProductServiceImp {
         productEntity.setName(name);
         productEntity.setImage(file.getOriginalFilename());
         productEntity.setPrice(price);
-<<<<<<< HEAD
-        productEntity.setQuantity(quantity);
-=======
-        productEntity.setQuanity(quanity);
->>>>>>> fad21aec420d4ea5e845c2de751f613cbc48f7c3
+
 
 //        ColorEntity colorEntity = new ColorEntity();
 //        colorEntity.setId(idColor);
@@ -107,6 +103,21 @@ public class ProductService implements ProductServiceImp {
 //        CategoryEntity categoryEntity = new CategoryEntity();
 //        categoryEntity.setId(idCategory);
 //        productEntity.setCategory(categoryEntity);
+
+        productEntity.setQuanity(quanity);
+
+        ColorEntity colorEntity = new ColorEntity();
+        colorEntity.setId(idColor);
+        productEntity.setColor(colorEntity);
+
+        SizeEntity sizeEntity = new SizeEntity();
+        sizeEntity.setId(idSize);
+        productEntity.setSize(sizeEntity);
+
+        CategoryEntity categoryEntity = new CategoryEntity();
+        categoryEntity.setId(idCategory);
+        productEntity.setCategory(categoryEntity);
+
 
         productRepository.save(productEntity);
 
