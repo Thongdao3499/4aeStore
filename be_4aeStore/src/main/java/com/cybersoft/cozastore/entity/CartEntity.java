@@ -12,8 +12,8 @@ public class CartEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "quantity")
-    private int quantity;
+    @Column(name = "quanity")
+    private int quanity;
 
     @ManyToOne
     @JoinColumn(name = "id_product")
@@ -34,13 +34,12 @@ public class CartEntity {
         this.id = id;
     }
 
-
-    public int getQuantity() {
-        return quantity;
+    public int getQuanity() {
+        return quanity;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setQuanity(int quanity) {
+        this.quanity = quanity;
     }
 
     public ProductEntity getProduct() {
